@@ -9,6 +9,7 @@ def main():
     screen = pg.display.set_mode((800, 600))  
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
+    mir_bg_img = pg.transform.flip(bg_img,True,False)
     img = pg.image.load("fig/3.png")
     img = pg.transform.flip(img,True,False)
     img_rct = img.get_rect()
@@ -22,7 +23,9 @@ def main():
 
         bg_x = (bg_x - 1) % 1600  
         screen.blit(bg_img, [bg_x, 0])  
-        screen.blit(bg_img, [bg_x - 1600, 0])  
+        screen.blit(bg_img, [bg_x - 1600, 0])
+        screen.blit(mir_bg_img,[bg_x+1600,0])
+        screen.blit(mir_bg_img,[bg_x+4800,0])  
         screen.blit(img, img_rct)
         pg.display.update()
         tmr += 1        
